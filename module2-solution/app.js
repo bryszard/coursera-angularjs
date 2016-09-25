@@ -1,32 +1,48 @@
 (function () {
+  'use strict';
+
   angular.module('ShoppingListApp', [])
-  .controller('ToBuyShoppingController', ToBuyShoppingController);
-  .controller('AlreadyBoughtShoppingController', AlreadyBoughtShoppingController);
+  .controller('ToBuyShoppingController', ToBuyShoppingController)
+  .controller('AlreadyBoughtShoppingController', AlreadyBoughtShoppingController)
+  .service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-  LunchCheckController.$inject = ['$scope'];
-  function LunchCheckController($scope) {
-    $scope.menuList = "";
-    $scope.message = "";
-    $scope.msgStyle = "";
+  ToBuyShoppingController.$inject = ['ShoppingListCheckOffService'];
+  function ToBuyShoppingController(ShoppingListCheckOffService) {
+    var toBuy = this;
 
-    $scope.checkCount = function () {
-      var menu = $scope.menuList.trim()
-                                .split(',')
-                                .filter(function(entry) { return entry.trim() != ''; });
-      var count = menu.length; // not taking into account 'empty' items
-
-      if (count === 0) {
-        $scope.message = "Please enter data first";
-        $scope.msgStyle = "color: red; border: solid 1px red; padding: 2px;";
-        return;
-      } else if (count <= 3) {
-        $scope.message = "Enjoy!";
-        $scope.msgStyle = "color: green; border: solid 1px green; padding: 2px;";
-      } else if (count > 3) {
-        $scope.message = "Too much!";
-        $scope.msgStyle = "color: green; border: solid 1px green; padding: 2px;";
-      }
-    };
+    toBuy.items = ShoppingListCheckOffService.getToBuyItems();
+    toBuy.isEmpty = function() { return toBuy.items.length < 1; }
+    toBuy.moveToBought = function(item) { ShoppingListCheckOffService.moveToBought(item); }
   }
 
+  AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
+  function AlreadyBoughtShoppingController(ShoppingListCheckOffService) {
+    var alreadyBought = this;
+
+    alreadyBought.items = ShoppingListCheckOffService.getAlreadyBoughtItems();
+    alreadyBought.isEmpty = function() { return alreadyBought.items.length < 1; }
+  }
+
+  function ShoppingListCheckOffService() {
+    var service = this;
+
+    var toBuyItems = [
+      { name: "Mineral Waters", quantity: "2" },
+      { name: "Avocados", quantity: "10" },
+      { name: "Bottles of milk", quantity: "4" },
+      { name: "Oranges", quantity: "20" },
+      { name: "Bananas", quantity: "6" }
+    ];
+    var alreadyBoughtItems = [];
+
+    service.moveToBought = function (item) {
+      var itemToMove = toBuyItems.indexOf(item);
+
+      toBuyItems.splice(itemToMove, 1);
+      alreadyBoughtItems.push(item);
+    };
+
+    service.getToBuyItems = function() { return toBuyItems; }
+    service.getAlreadyBoughtItems = function() { return alreadyBoughtItems; }
+  }
 })();
