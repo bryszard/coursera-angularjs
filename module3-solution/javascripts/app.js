@@ -27,10 +27,12 @@
     narrowCtrl.searchTerm = "";
     narrowCtrl.found = [];
 
-    narrowCtrl.findMatched = MenuSearchService.getMatchedMenuItems(narrowCtrl.searchTerm)
-    .then(function(result) {
-      narrowCtrl.found = result;
-    });
+    narrowCtrl.findMatched = function() {
+      MenuSearchService.getMatchedMenuItems(narrowCtrl.searchTerm)
+      .then(function(result) {
+        narrowCtrl.found = result;
+      });
+    }
   }
 
   MenuSearchService.$inject = ['$http']
