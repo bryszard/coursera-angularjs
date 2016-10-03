@@ -8,7 +8,7 @@
 
   function FoundItemsDirective() {
     var ddo = {
-      templateUrl: 'Hello World!',
+      templateUrl: 'foundItems.html',
       scope: {
         items: '<'
       }
