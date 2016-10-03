@@ -10,11 +10,19 @@
     var ddo = {
       templateUrl: 'foundItems.html',
       scope: {
-        items: '<'
-      }
+        items: '<',
+        onRemove: '&'
+      },
+      controller: NarrowItDownDirectiveController,
+      controllerAs: 'ctrl',
+      bindToController: true
     };
 
     return ddo;
+  }
+
+  function NarrowItDownDirectiveController() {
+    var ctrl = this;
   }
 
   NarrowItDownController.$inject = ['MenuSearchService']
@@ -29,11 +37,11 @@
       .then(function(result) {
         narrowCtrl.found = result;
       });
-    }
+    };
 
-    window.checkFound = function() {
-      console.log(narrowCtrl.found);
-    }
+    narrowCtrl.removeItem = function(index) {
+      narrowCtrl.found.splice(index, 1);
+    };
   }
 
   MenuSearchService.$inject = ['$http']
