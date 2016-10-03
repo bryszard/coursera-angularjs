@@ -22,6 +22,7 @@
 
     <!-- found-items should be implemented as a component -->
     <found-items items="ctrl.found" on-remove="ctrl.removeItem(index)"></found-items>
+    <div ng-if="ctrl.noMatches" class="warning">Nothing found.</div>
   </div>
 </body>
 </html>

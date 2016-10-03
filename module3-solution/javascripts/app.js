@@ -35,7 +35,13 @@
     narrowCtrl.findMatched = function() {
       MenuSearchService.getMatchedMenuItems(narrowCtrl.searchTerm)
       .then(function(result) {
-        narrowCtrl.found = result;
+        if (narrowCtrl.searchTerm == '' || result.length == 0) {
+          narrowCtrl.found = [];
+          narrowCtrl.noMatches = true;
+        } else {          
+          narrowCtrl.found = result;
+          narrowCtrl.noMatches = false;
+        }
       });
     };
 
