@@ -33,6 +33,10 @@
         narrowCtrl.found = result;
       });
     }
+
+    window.checkFound = function() {
+      console.log(narrowCtrl.found);
+    }
   }
 
   MenuSearchService.$inject = ['$http']
