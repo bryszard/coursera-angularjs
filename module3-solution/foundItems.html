@@ -1,5 +1,7 @@
-<li ng-repeat="item in items">
-  {{ item.name }}, {{ item.short_name }}, {{ item.description }}
-  <button>Don't want this one!</button>
-  <!-- ng-click='ctrl.removeItem($index);' -->
-</li>
+<ul>
+  <li ng-repeat="item in items">
+    {{ item.name }}, {{ item.short_name }}, {{ item.description }}
+    <button>Don't want this one!</button>
+    <!-- ng-click='ctrl.removeItem($index);' -->
+  </li>
+</ul>
