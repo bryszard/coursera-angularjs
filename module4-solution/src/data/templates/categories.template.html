@@ -1,0 +1,13 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Short name</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in $ctrl.list" ui-sref="itemsList({categoryShortName: item.short_name})" class='link-item'>
+      <td>{{ item.name }}</td>
+      <td>{{ item.short_name }}</td>
+  </tbody>
+</table>

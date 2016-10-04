@@ -1,0 +1,20 @@
+body {
+  font-size: 1.2em;
+  margin: 10px 60px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.link {
+  text-decoration: underline;
+  color: green;
+  cursor: pointer;
+}
+
+.link-item:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: green;
+}
