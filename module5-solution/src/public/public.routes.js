@@ -63,6 +63,9 @@ function routeConfig ($stateProvider) {
       resolve: {
         getUserData: ['MenuService', function (MenuService) {
           return MenuService.getUserData;
+        }],
+        getMenuItem: ['MenuService', function (MenuService) {
+          return MenuService.getMenuItem;
         }]
       }
     });

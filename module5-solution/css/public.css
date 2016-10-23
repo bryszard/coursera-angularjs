@@ -133,6 +133,16 @@ h3.menu-item-title {
   line-height: normal;
   font-size: 12px;
 }
+.dish-img {
+  margin: auto;
+  padding-top: 15px;
+}
+.dish-description {
+  margin:auto;
+  width: 250px;
+  padding-top: 3px;
+  text-align: center;
+}
 /* MY INFO PAGE */
 
 /********** Large devices only **********/

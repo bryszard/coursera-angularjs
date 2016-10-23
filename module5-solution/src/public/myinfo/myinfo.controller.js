@@ -4,14 +4,14 @@
 angular.module('public')
 .controller('MyInfoController', MyInfoController);
 
-MyInfoController.$inject = ['getUserData', 'ApiPath'];
-function MyInfoController(getUserData, ApiPath) {
+MyInfoController.$inject = ['getUserData', 'getMenuItem', 'ApiPath'];
+function MyInfoController(getUserData, getMenuItem, ApiPath) {
   var $ctrl = this;
   var registered;
   var notRegistered;
+  var favourite;
 
   $ctrl.basePath = ApiPath;
-
   $ctrl.getUserData = function () {
     var email = $ctrl.user.email;
     
@@ -20,8 +20,10 @@ function MyInfoController(getUserData, ApiPath) {
 
       if (users !== 'undefined' && users.length > 0) {
         $ctrl.registered = users.pop();
-        console.log($ctrl.registered);
-        window.userData = $ctrl.registered;
+        getMenuItem($ctrl.registered.description).then(function(response) {
+          $ctrl.favourite = response.data;
+          console.log($ctrl.favourite);
+        });        
         $ctrl.notRegistered = false;
       } else {
         $ctrl.notRegistered = true;
