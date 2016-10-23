@@ -1,6 +1,48 @@
 <div class="container">
-  <h2 id="menu-categories-title" class="text-center">Menu Categories</h2>
-  <div class="text-center">
-    Substituting white rice with brown rice or fried rice after 3:00pm will be $1.50 for a pint and $2.50 for a quart.
+  <h3 class="text-center">Sign up</h3>
+  <hr>
+  <form name="regForm" class="signup-form" novalidate>
+    <div class="row form-group">
+      <label for="first_name" class="col-xs-4 col-sm-3 col-md-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">First name: </label>
+      <input type="text" id="first_name" name="firstName" class="col-xs-4 col-sm-3 col-md-2"
+        ng-model="suCtrl.user.firstName" 
+        required>
+      <span class="col-xs-2" ng-if="regForm.firstName.$error.required && regForm.firstName.$touched"> Field is required</span>
+    </div>
+    <div class="row form-group">
+      <label for="last_name" class="col-xs-4 col-sm-3 col-md-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">Last name: </label>
+      <input type="text" id="last_name" name="lastName" class="col-xs-4 col-sm-3 col-md-2"
+        ng-model="suCtrl.user.lastName" 
+        required>
+      <span class="col-xs-2" ng-if="regForm.lastName.$error.required && regForm.lastName.$touched"> Field is required</span>
+    </div>
+    <div class="row form-group">
+      <label for="email" class="col-xs-4 col-sm-3 col-md-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">Email: </label>
+      <input type="text" id="email" name="email" class="col-xs-4 col-sm-3 col-md-2"
+        ng-model="suCtrl.user.email" 
+        required>
+      <span class="col-xs-2" ng-if="regForm.email.$error.required && regForm.email.$touched"> Field is required</span>
+    </div>
+    <div class="row form-group">
+      <label for="phone_number" class="col-xs-4 col-sm-3 col-md-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">Phone number: </label>
+      <input type="text" id="phone_number" name="phoneNumber" class="col-xs-4 col-sm-3 col-md-2"
+        ng-model="suCtrl.user.phoneNumber" 
+        required>
+      <span class="col-xs-2" ng-if="regForm.phoneNumber.$error.required && regForm.phoneNumber.$touched"> Field is required</span>
+    </div>
+    <div class="row form-group">
+      <label for="favourite_dish" class="col-xs-4 col-sm-3 col-md-2 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">Favourite dish (menu number): </label>
+      <input type="text" id="favourite_dish" name="favourite" class="col-xs-4 col-sm-3 col-md-2"
+        ng-model="suCtrl.user.favouriteDish" 
+        required>
+      <span class="col-xs-2" ng-if="regForm.favourite.$error.required && regForm.favourite.$touched"> Field is required</span>
+      <span class="col-xs-2" ng-if="suCtrl.invalidDish"> No such menu number exists.</span>
+    </div>
+    <div class="row form-group">
+      <button ng-click='suCtrl.getItem(suCtrl.user.favouriteDish)' ng-disabled="regForm.$invalid" class="btn btn-success col-xs-8 col-sm-6 col-md-4 col-xs-offset-2 col-sm-offset-3 col-md-offset-4">Submit</button>
+    </div>
+  </form>
+  <div class="row" ng-if="suCtrl.saveSuccess">
+    <div class="col-xs-6 col-xs-offset-3 text-center">Your information has been saved.</div>
   </div>
 </div>
