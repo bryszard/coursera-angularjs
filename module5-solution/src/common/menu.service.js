@@ -31,8 +31,21 @@ function MenuService($http, ApiPath) {
     return $http.get(ApiPath + '/menu_items/' + itemShortName + '.json');
   };
 
+  service.updateMenuItem = function (menuItem) {
+    var config = {};
+    if (menuItem) {
+      config.menu_item = menuItem;
+    }
+
+    return $http.post(ApiPath + '/menu_items.json', config);
+  };
+
+  service.getUserData = function (email) {
+    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
+      console.log(response.data);
+      return response.data;
+    });
+  }
 }
-
-
 
 })();

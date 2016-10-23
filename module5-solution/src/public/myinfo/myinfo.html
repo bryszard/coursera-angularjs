@@ -1,0 +1,16 @@
+<div class="container">
+  <h3 class="text-center">My info</h3>
+  <hr>
+  <form name="regForm" class="signup-form" novalidate>
+    <div class="row form-group">
+      <label for="email" class="col-xs-2 col-xs-offset-2 text-right">Email: </label>
+      <input type="text" id="email" name="email" class="col-xs-4 col-sm-3 col-md-4"
+        ng-model="miCtrl.user.email" 
+        required>
+      <button ng-click='miCtrl.getUserData()' class="btn btn-success glyphicon glyphicon-refresh email-search col-xs-1"></button>
+    </div>    
+  </form>
+  <div class="row" ng-if="suCtrl.saveSuccess">
+    <div class="col-xs-6 col-xs-offset-3 text-center">Your information has been saved.</div>
+  </div>
+</div>

@@ -127,6 +127,14 @@ h3.menu-item-title {
 }
 /* END SIGN UP PAGE */
 
+/* MY INFO PAGE */
+.email-search {
+  margin-left: 1em;
+  line-height: normal;
+  font-size: 12px;
+}
+/* MY INFO PAGE */
+
 /********** Large devices only **********/
 @media (min-width: 1200px) {
   .container .jumbotron {

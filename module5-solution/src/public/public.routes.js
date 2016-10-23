@@ -49,6 +49,20 @@ function routeConfig ($stateProvider) {
       resolve: {
         getMenuItem: ['MenuService', function (MenuService) {
           return MenuService.getMenuItem;
+        }],
+        updateMenuItem: ['MenuService', function (MenuService) {
+          return MenuService.updateMenuItem;
+        }]
+      }
+    })
+    .state('public.my_info', {
+      url: '/my_info',
+      templateUrl: 'src/public/myinfo/myinfo.html',
+      controller: 'MyInfoController',
+      controllerAs: "miCtrl",
+      resolve: {
+        getUserData: ['MenuService', function (MenuService) {
+          return MenuService.getUserData;
         }]
       }
     });
