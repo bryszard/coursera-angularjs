@@ -1,6 +1,31 @@
-<ul id='list'>
+<!-- Started to refactor a bit the display, but didn't finish  -->
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Short name</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in ctrl.items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.short_name }}</td>
+      <td>{{ item.description }}</td>
+      <td><button class="btn btn-danger" ng-click='ctrl.onRemove({index: $index});'>Don't want this one!</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <ul id='list'>
+
+  <th>
+
+  </th>
   <li ng-repeat="item in ctrl.items">  
     {{ item.name }}, {{ item.short_name }}, {{ item.description }}
     <button ng-click='ctrl.onRemove({index: $index});'>Don't want this one!</button>
   </li>
-</ul>
+</ul> -->
