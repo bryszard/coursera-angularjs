@@ -8,9 +8,17 @@
         ng-model="miCtrl.user.email" 
         required>
       <button ng-click='miCtrl.getUserData()' class="btn btn-success glyphicon glyphicon-refresh email-search col-xs-1"></button>
-    </div>    
+    </div>
   </form>
-  <div class="row" ng-if="suCtrl.saveSuccess">
-    <div class="col-xs-6 col-xs-offset-3 text-center">Your information has been saved.</div>
+  <br>
+  <div class="row" ng-if="miCtrl.registered">
+    <div class="col-xs-2 col-xs-offset-4"><strong>Name:</strong></div><div class="col-xs-4">{{ miCtrl.registered.name }}</div>
+    <div class="col-xs-2 col-xs-offset-4"><strong>Phone number:</strong></div><div class="col-xs-4">{{ miCtrl.registered.large_portion_name }}</div>
+    <div class="col-xs-2 col-xs-offset-4"><strong>Email:</strong></div><div class="col-xs-4">{{ miCtrl.registered.small_portion_name }}</div>
+    <div class="col-xs-2 col-xs-offset-4"><strong>Favourite dish:</strong></div><div class="col-xs-4">{{ miCtrl.registered.description }}</div>
+    <img class="img-responsive dish-img" width="250" height="150" ng-src="{{miCtrl.basePath}}/images/{{miCtrl.registered.description}}.jpg" alt="Favourite dish">
+  </div>
+  <div class="row" ng-if="miCtrl.notRegistered">
+    <div class="col-xs-6 col-xs-offset-3 text-center">Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!</a></div>
   </div>
 </div>

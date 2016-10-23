@@ -13,7 +13,7 @@ function SignupController(getMenuItem, updateMenuItem) {
   $ctrl.getItem = function (shortName) {
     var userData = {      
       'short_name': 'USER',
-      'name': $ctrl.user.firstName + "," + $ctrl.user.lastName,
+      'name': $ctrl.user.firstName + " " + $ctrl.user.lastName,
       'description': $ctrl.user.favouriteDish,
       'small_portion_name': $ctrl.user.email,
       'large_portion_name': $ctrl.user.phoneNumber

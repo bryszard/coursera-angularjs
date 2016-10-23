@@ -41,10 +41,14 @@ function MenuService($http, ApiPath) {
   };
 
   service.getUserData = function (email) {
-    return $http.get(ApiPath + '/menu_items.json', config).then(function (response) {
-      console.log(response.data);
-      return response.data;
+    var promise = $http.get(ApiPath + '/menu_items.json').then(function (response) {
+
+      var user = response.data.menu_items.filter(function(item) {
+        return item.small_portion_name === email;
+      });
+      return user;
     });
+    return promise;
   }
 }
 
